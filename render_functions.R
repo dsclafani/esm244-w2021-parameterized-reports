@@ -41,7 +41,7 @@ render_penguin_report = function(species) {
   )
 }
 
-pen_species <- unique(penguin$species)
+pen_species <- unique(penguin_data$species)
 
 for (species in pen_species){
   render_penguin_report(species)
