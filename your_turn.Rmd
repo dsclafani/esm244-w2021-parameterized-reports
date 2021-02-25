@@ -2,6 +2,8 @@
 title: "YOUR TURN! UPDATE THIS TITLE."
 author: "Your name"
 output: html_document
+params:
+  penguin_species: Adelie
 ---
 
 ### Your job: create a parameterized report using data from `penguins.csv`. 
@@ -15,5 +17,17 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+
+#reading in data
+penguins <- read_csv("penguins.csv")
+```
+
+```{r}
+penguin_data <- penguins %>% 
+  filter(species == params$penguin_species)
+
+ggplot(data = penguin_data, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_line()
 ```
 
